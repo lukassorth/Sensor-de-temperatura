@@ -3,14 +3,14 @@
 #include <DHT.h> //Biblioteca para funcionamento do sensor de temperatura e umidade DHT11
 #include <FirebaseArduino.h> //Biblioteca Firebase
 #include <WiFiManager.h> //Biblioteca configuração do WiFi
-#include <DNSServer.h>
+#include <DNSServer.h>  //Biblioteca para servidor de configuração
 
 
 // Difinindo Firebase e WIFI
-#define FIREBASE_HOST "minha-granja-19d88-default-rtdb.firebaseio.com"
-#define FIREBASE_AUTH "y0MxM0ESEqdqhrAp047fPB0gPy6Y5p8SEeDXdIkG"
-const char* ssid = "Viviane";  // Rede WiFi
-const char* password = "ildowerner";  //Senha da Rede WiFi
+#define FIREBASE_HOST "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" //Host do firebase realtime database 
+#define FIREBASE_AUTH "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" //Key do projeto do firebase para gravar 
+const char* ssid = "XXXXXXXX";  // Rede WiFi
+const char* password = "XXXXXXXX";  //Senha da Rede WiFi
 
 ESP8266WebServer server(80); //server na porta 80
 
@@ -28,7 +28,7 @@ String mac = WiFi.softAPmacAddress();
 
 void setup() {
   Serial.begin(9600); //Inicializa a comunicação serial
-  delay(50); // ?Intervalo para aguardar a estabilização do sistema
+  delay(50); // Intervalo para aguardar a estabilização do sistema
   dht.begin(); //Inicializa o sensor DHT11
 
   Serial.println("Conectando a Rede: "); //Imprime na serial a mensagem
@@ -38,8 +38,8 @@ void setup() {
   
 
   //Verificação da conexão
-  while (tempo <= 20) { //Enquanto estiver aguardando status da conexão
-    delay(500);
+  while (tempo <= 30) { //Enquanto estiver aguardando status da conexão
+    delay(1000);
     Serial.print("."); //Imprime pontos
     tempo = tempo + 1;
     Serial.println(tempo);
